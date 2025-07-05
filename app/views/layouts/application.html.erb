@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= "Checklists | #{content_for(:title)}" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Use Simple.css framework from https://simplecss.org %>
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <h1><%= link_to "Checklists", checklists_url %></h1>
+
+      <% if authenticated? %>
+        <nav>
+          <ul>
+            <li><%= link_to "My checklists", checklists_url %></li>
+            <li><%= link_to "Add a checklist", new_checklist_url %></li>
+            <li><%= link_to "Change my account", edit_user_url(Current.user) %></li>
+            <li><%= link_to "Sign out", session_url, data: { turbo_method: :delete } %></li>
+          </ul>
+        </nav>
+      <% else %>
+        <p>Checklists help you avoid mistakes. Manage yours here. For free.</p>
+      <% end %>
+    </header>
+
+    <main>
+      <h2><%= content_for(:title) %></h2>
+
+      <% if flash[:alert] || flash[:notice] %>
+        <p class="notice"><%= flash[:alert] || flash[:notice] %></p>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 <a href="http://bit.ly/mariomarroquim">Mário Marroquim</a>. All rights reserved. Version: 1.0.0.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<% content_for :title, "Sign in" %>
+
+<%= form_with url: session_path do |form| %>
+  <p>
+    <%= form.label :email_address %>
+    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", value: params[:email_address] %>
+  </p>
+
+  <p>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true, autocomplete: "current-password" %>
+  </p>
+
+  <%= form.submit "Confirm" %>
+<% end %>
+
+<p>
+  <b><%= link_to "Sign up for free!", new_user_path %></b>
+  |
+  <%= link_to "Recover password", new_password_path %>
+</p>

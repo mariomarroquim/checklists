@@ -1,0 +1,21 @@
+<% content_for :title, "My Checklists" %>
+
+<div id="checklists">
+  <% @checklists.each do |checklist| %>
+    <details>
+      <summary><%= checklist.title %></summary>
+
+      <ul>
+        <% checklist.items.each do |item| %>
+          <li><%= item %></li>
+        <% end %>
+      </ul>
+
+      <p>
+        <%= link_to "Change", edit_checklist_path(checklist) %>
+        |
+        <%= link_to "Remove", checklist, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      </p>
+    </details>
+  <% end %>
+</div>

@@ -1,0 +1,13 @@
+<%= form_with(model: checklist) do |form| %>
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title, required: true, autofocus: true %>
+  </p>
+
+  <p>
+    <%= form.label :content %>
+    <%= form.textarea :content, required: true, rows: 8, placeholder: "First item\nSecond item\nThird item..." %>
+  </p>
+
+  <%= form.submit "Confirm" %>
+<% end %>

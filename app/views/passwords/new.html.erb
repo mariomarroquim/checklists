@@ -1,0 +1,10 @@
+<% content_for :title, "Recover password" %>
+
+<%= form_with url: passwords_path do |form| %>
+  <p>
+    <%= form.label :email_address %>
+    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", value: params[:email_address] %>
+  </p>
+
+  <%= form.submit "Send recovery link" %>
+<% end %>
