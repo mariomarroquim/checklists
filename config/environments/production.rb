@@ -4,7 +4,7 @@ Rails.application.configure do
   # Log requests in a single line.
   config.lograge.enabled = true
   config.lograge.custom_payload do |controller|
-    { current_user_id: controller.current_user.try(:id) }
+    { current_user_id: Current.user.try(:id) }
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
