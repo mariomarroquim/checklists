@@ -20,5 +20,6 @@ sleep 3
 
 printf  "\n== RUNNING TESTS ==\n\n"
 bundle exec rails test
+bundle exec rails test:system
 
 printf  "\n== ALL CHECKS DONE! ==\n\n"
