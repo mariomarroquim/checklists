@@ -5,4 +5,9 @@ class ChecklistsTest < ApplicationSystemTestCase
     visit root_url
     assert_text "Checklists"
   end
+
+  test "visiting the Rails health check page" do
+    visit rails_health_check_url
+    assert_text ""
+  end
 end
