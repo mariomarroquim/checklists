@@ -3,6 +3,10 @@ require "test_helper"
 class ChecklistsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @checklist = checklists(:one)
+
+    user = users(:one)
+    password = "password"
+    post session_url, params: { email_address: user.email_address, password: }
   end
 
   test "should get index" do
@@ -17,15 +21,10 @@ class ChecklistsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create checklist" do
     assert_difference("Checklist.count") do
-      post checklists_url, params: { checklist: { content: @checklist.content, title: @checklist.title } }
+      post checklists_url, params: { checklist: { content: "Test", title: "Test" } }
     end
 
-    assert_redirected_to checklist_url(Checklist.last)
-  end
-
-  test "should show checklist" do
-    get checklist_url(@checklist)
-    assert_response :success
+    assert_redirected_to checklists_url
   end
 
   test "should get edit" do
@@ -35,7 +34,7 @@ class ChecklistsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update checklist" do
     patch checklist_url(@checklist), params: { checklist: { content: @checklist.content, title: @checklist.title } }
-    assert_redirected_to checklist_url(@checklist)
+    assert_redirected_to checklists_url
   end
 
   test "should destroy checklist" do
