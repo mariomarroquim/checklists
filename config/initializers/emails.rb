@@ -1,3 +1,8 @@
+# Be sure to restart your server when you modify this file.
+
+# Email configuration for the application.
+# This initializer sets up the Action Mailer to use SMTP with Gmail.
+
 Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
