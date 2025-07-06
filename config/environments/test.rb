@@ -3,6 +3,9 @@
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
 
+# Load the environment variables from an .env file.
+require "dotenv/load"
+
 Rails.application.configure do
   # Disable tracking changes to models.
   PaperTrail.enabled = false

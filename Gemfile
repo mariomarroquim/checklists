@@ -63,6 +63,7 @@ end
 group :development, :test do
   gem "awesome_print"
   gem "bullet"
+  gem "dotenv"
 end
 
 group :development do
