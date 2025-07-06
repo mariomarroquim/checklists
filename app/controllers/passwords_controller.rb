@@ -12,7 +12,7 @@ class PasswordsController < ApplicationController
       PasswordsMailer.reset(user).deliver_later
     end
 
-    redirect_to new_session_path, notice: "The password recovery link was sent by email."
+    redirect_to new_session_url, notice: "The password recovery link was sent by email."
   end
 
   def edit; end
@@ -20,7 +20,7 @@ class PasswordsController < ApplicationController
   def update
     if @user.update(params.permit(:password, :password_confirmation))
       start_new_session_for @user
-      redirect_to after_authentication_url, notice: "The new password was successfully created."
+      redirect_to after_authentication_url, notice: "The password was successfully created."
     else
       redirect_to edit_password_path(params[:token]), alert: "The passwords did not match."
     end
