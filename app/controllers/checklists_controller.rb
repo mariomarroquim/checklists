@@ -3,6 +3,8 @@ class ChecklistsController < ApplicationController
 
   def index
     @checklists = Current.user.checklists.order(:title).all
+
+    flash.now[:notice] = "You have no checklists. Add your first checklist!" if @checklists.blank?
   end
 
   def new
