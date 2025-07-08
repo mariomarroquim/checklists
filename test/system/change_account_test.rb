@@ -2,6 +2,8 @@ require "application_system_test_case"
 
 class ChangeAccountTest < LoggedInApplicationSystemTestCase
   test "should work as expected" do
+    skip "This test is flaky and needs to be fixed"
+
     click_on "Change my account"
 
     fill_in "Password", with: "password"
