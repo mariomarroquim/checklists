@@ -1,5 +1,8 @@
 # Todo
 
-- Pesquisa de checklists
-- Compartilhamento de checklists
-- Diretório público de checklists?
+- Convert system test into controller tests
+- Create a job to remove accounts
+- Use expect in params retrieval
+- Add checklist searching
+- Add checklist sharing
+- Create a checklist directory?
