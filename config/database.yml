@@ -20,17 +20,12 @@ test:
   <<: *default
   database: storage/test.sqlite3
 
-# Store production databases in the storage/ directory, which by default
+# Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
 production:
-  # Only the main database is configured to use PostgreSQL.
   primary:
     <<: *default
-    adapter: postgresql
-    database: checklists_production
-    encoding: unicode
-    url: <%= ENV["CHECKLISTS_DATABASE_URL"] %>
-    reconnect: true
+    database: storage/production.sqlite3
   cache:
     <<: *default
     database: storage/production_cache.sqlite3

@@ -76,7 +76,6 @@ end
 
 group :production do
   gem "lograge"
-  gem "pg"
 end
 
 gem "email_address"
