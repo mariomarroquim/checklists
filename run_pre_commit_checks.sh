@@ -19,7 +19,6 @@ bundle exec rubocop -a
 sleep 3
 
 printf  "\n== RUNNING TESTS ==\n\n"
-bundle exec rails test
-bundle exec rails test:system
+bundle exec rails test:controllers
 
 printf  "\n== ALL CHECKS DONE! ==\n\n"

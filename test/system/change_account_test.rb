@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class ChangeAccountTest < LoggedInApplicationSystemTestCase
+class ChangeAccountTest < ApplicationSystemTestCase
   test "should work as expected" do
     skip "This test is flaky and needs to be fixed"
 
