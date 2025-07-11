@@ -25,16 +25,16 @@ test:
 production:
   primary:
     <<: *default
-    database: <%= ENV["RAILWAY_VOLUME_MOUNT_PATH"] %>/production.sqlite3
+    database: <%= ENV.fetch("RAILWAY_VOLUME_MOUNT_PATH") { "storage" } %>/production.sqlite3
   cache:
     <<: *default
-    database: <%= ENV["RAILWAY_VOLUME_MOUNT_PATH"] %>/production_cache.sqlite3
+    database: <%= ENV.fetch("RAILWAY_VOLUME_MOUNT_PATH") { "storage" } %>/production_cache.sqlite3
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
-    database: <%= ENV["RAILWAY_VOLUME_MOUNT_PATH"] %>/production_queue.sqlite3
+    database: <%= ENV.fetch("RAILWAY_VOLUME_MOUNT_PATH") { "storage" } %>/production_queue.sqlite3
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: <%= ENV["RAILWAY_VOLUME_MOUNT_PATH"] %>/production_cable.sqlite3
+    database: <%= ENV.fetch("RAILWAY_VOLUME_MOUNT_PATH") { "storage" } %>/production_cable.sqlite3
     migrations_paths: db/cable_migrate
