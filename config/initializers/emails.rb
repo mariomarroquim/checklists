@@ -7,10 +7,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: ENV.fetch("EMAIL_SERVER") { "smtp.example.com" },
     port: 587,
-    user_name: "mariomarroquim@gmail.com",
-    password: ENV["GOOGLE_APP_PASSWORD"],
+    user_name: ENV.fetch("EMAIL_ADDRESS") { "from@example.com" },
+    password: ENV.fetch("EMAIL_PASSWORD") { "password" },
     authentication: "plain",
     enable_starttls_auto: true,
     enable_starttls: true
