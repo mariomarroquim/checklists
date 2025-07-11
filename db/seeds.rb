@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-user = User.find_or_create_by!(email_address: "mariomarroquim@gmail.com") do |it|
+user = User.find_or_create_by!(email_address: ENV.fetch("EMAIL_ADDRESS") { "from@example.com" }) do |it|
   it.password = "password"
   it.password_confirmation = "password"
 end
