@@ -20,11 +20,10 @@ sleep 3
 
 printf  "\n== RUNNING TESTS ==\n"
 bundle exec rails test:controllers
+sleep 3
 
 printf  "\n== RUNNING CLEANING ==\n\n"
-bundle exec rails log:clear
-bundle exec rails tmp:clear
-bundle exec rails assets:clobber
+bundle exec rails assets:clobber tmp:clear log:clear
 printf "Done cleaning\n"
 
 printf  "\n== ALL CHECKS DONE! ==\n\n"
