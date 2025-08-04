@@ -1,6 +1,5 @@
 # Todo
 
-- Rename checklist content to items
 - Add current user email to change account page (read-only)
 - Add upvoting/downvoting checklists
 - Create a job to remove accounts
