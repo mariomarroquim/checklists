@@ -2,7 +2,7 @@
 
 <div id="checklists">
   <% @checklists.each do |checklist| %>
-    <details>
+    <details name="checklists">
       <summary><%= checklist.title %></summary>
 
       <ul>
@@ -14,8 +14,22 @@
       <p>
         <%= link_to "Change", edit_checklist_path(checklist) %>
         |
+        <% if checklist.published_at.blank? %>
+          <%= link_to "Publish", publish_checklist_path(checklist), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>
+        <% else %>
+          <%= link_to "Unpublish", unpublish_checklist_path(checklist), data: { turbo_method: :post } %>
+        <% end %>
+        |
         <%= link_to "Remove", checklist, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
       </p>
+
+      <% if checklist.published_at.present? %>
+        <p>
+          <small>
+            Public URL: <%= link_to public_checklist_url(slug: checklist.slug), public_checklist_url(slug: checklist.slug) %>
+          </small>
+        </p>
+      <% end %>
     </details>
   <% end %>
 </div>

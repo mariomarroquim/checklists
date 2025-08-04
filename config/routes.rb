@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :users, except: %i[ index show ]
   resource :session, except: %i[ show edit update ]
   resources :passwords, param: :token, except: %i[ index show destroy ]
+
   resources :checklists, except: :show
+  get "/:slug", controller: "checklists", action: :show, as: :public_checklist
+  post "/checklists/:id/publish", controller: "checklists", action: :publish, as: :publish_checklist
+  post "/checklists/:id/unpublish", controller: "checklists", action: :unpublish, as: :unpublish_checklist
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

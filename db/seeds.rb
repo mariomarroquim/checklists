@@ -13,4 +13,6 @@ user = User.find_or_create_by!(email_address: ENV.fetch("EMAIL_ADDRESS") { "exam
   it.password_confirmation = "12345678"
 end
 
-Checklist.find_or_create_by!(title: "First checklist", content: "First item\nSecond item\nThird item", user:)
+Checklist.find_or_create_by!(title: "First checklist", content: "First item\nSecond item\nThird item", user:) do |it|
+  it.published_at = Time.current
+end
