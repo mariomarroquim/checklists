@@ -18,7 +18,7 @@ class ChecklistsController < ApplicationController
 
   def report
     if user_reported_checklist?
-      redirect_to public_checklist_url(params[:slug]), notice: "You have already reported this checklist."
+      redirect_to public_checklist_url(params.expect(:slug)), notice: "You have already reported this checklist."
       return
     end
 
@@ -84,11 +84,11 @@ class ChecklistsController < ApplicationController
 
   private
     def find_checklist_by_id
-      @checklist = Current.user.checklists.find(params[:id])
+      @checklist = Current.user.checklists.find(params.expect(:id))
     end
 
     def find_checklist_by_slug
-      @checklist = Checklist.where(slug: params[:slug]&.downcase).where.not(published_at: nil).first
+      @checklist = Checklist.where(slug: params.expect(:slug)&.downcase).where.not(published_at: nil).first
 
       if @checklist.nil? || (!user_reported_checklist? && @checklist.should_be_hidden?)
         render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found

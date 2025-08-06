@@ -8,7 +8,7 @@ class PasswordsController < ApplicationController
   def new; end
 
   def create
-    if user = User.find_by(email_address: params[:email_address])
+    if user = User.find_by(email_address: params.expect(:email_address))
       PasswordsMailer.reset(user).deliver_later
     end
 
@@ -22,14 +22,14 @@ class PasswordsController < ApplicationController
       start_new_session_for @user
       redirect_to after_authentication_url, notice: "The password was successfully created."
     else
-      redirect_to edit_password_path(params[:token]), alert: "The passwords did not match."
+      redirect_to edit_password_url(params.expect(:token)), alert: "The passwords did not match."
     end
   end
 
   private
     def set_user_by_token
-      @user = User.find_by_password_reset_token!(params[:token])
+      @user = User.find_by_password_reset_token!(params.expect(:token))
     rescue ActiveSupport::MessageVerifier::InvalidSignature
-      redirect_to new_password_path, alert: "The password recovery link is invalid or has expired."
+      redirect_to new_password_url, alert: "The password recovery link is invalid or has expired."
     end
 end
