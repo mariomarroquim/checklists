@@ -9,5 +9,5 @@
 - Add public checklist searching / indexing (checklist directory)
 
 ## Non-functional
-- Create a job to remove accounts
+- Add rate limiting for public endpoints
 - Convert system test into controller tests
