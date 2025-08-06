@@ -1,23 +1,33 @@
 class ChecklistsController < ApplicationController
-  before_action :set_checklist, only: %i[ edit update publish unpublish destroy ]
+  before_action :find_checklist_by_id, only: %i[ edit update publish unpublish destroy ]
+  before_action :find_checklist_by_slug, only: %i[ show report ]
 
-  allow_unauthenticated_access only: :show
+  allow_unauthenticated_access only: %i[ show report ]
 
   def index
     @checklists = Current.user.checklists.order(:title).all
 
-    flash.now[:notice] = "You have no checklists. Add your first checklist!" if @checklists.blank?
+    flash.now[:notice] = "You have no checklists. Add your first!" if @checklists.blank?
   end
 
   def show
-    @checklist = Checklist.where(slug: params[:slug]).where.not(published_at: nil).first
+    @checklist.increment!(:visits)
 
-    if @checklist.nil?
-      render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+    render :show
+  end
+
+  def report
+    if user_reported_checklist?
+      redirect_to public_checklist_url(params[:slug]), notice: "You have already reported this checklist."
       return
     end
 
-    render :show
+    @checklist.increment!(:reports)
+
+    session[:reports] ||= []
+    session[:reports] << @checklist.slug
+
+    redirect_to public_checklist_url(@checklist.slug), notice: "This checklist was successfully reported."
   end
 
   def new
@@ -73,8 +83,21 @@ class ChecklistsController < ApplicationController
   end
 
   private
-    def set_checklist
+    def find_checklist_by_id
       @checklist = Current.user.checklists.find(params[:id])
+    end
+
+    def find_checklist_by_slug
+      @checklist = Checklist.where(slug: params[:slug]&.downcase).where.not(published_at: nil).first
+
+      if @checklist.nil? || (!user_reported_checklist? && @checklist.should_be_hidden?)
+        render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+        nil
+      end
+    end
+
+    def user_reported_checklist?
+      @user_reported_checklist ||= session[:reports]&.include?(@checklist.slug)
     end
 
     def checklist_params

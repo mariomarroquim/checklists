@@ -6,4 +6,14 @@
       <li><%= item %></li>
     <% end %>
   </ul>
+
+  <p>
+    <small>
+      Public URL:
+      <%= link_to public_checklist_url(slug: @checklist.slug), public_checklist_url(slug: @checklist.slug) %>
+      <br/>
+      Report this checklist:
+      <%= link_to "Click here", report_checklist_url(@checklist.slug), rel: "nofollow", data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>
+    </small>
+  </p>
 </div>

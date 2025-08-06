@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :checklists, except: :show
   get "/:slug", controller: "checklists", action: :show, as: :public_checklist
+  post "/:slug/report", controller: "checklists", action: :report, as: :report_checklist
   post "/checklists/:id/publish", controller: "checklists", action: :publish, as: :publish_checklist
   post "/checklists/:id/unpublish", controller: "checklists", action: :unpublish, as: :unpublish_checklist
 

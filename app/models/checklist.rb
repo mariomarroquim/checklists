@@ -1,9 +1,11 @@
 class Checklist < ApplicationRecord
+  has_paper_trail ignore: %i[ visits reports ]
+
   belongs_to :user
 
-  validates :title, :slug, :content, presence: true
+  validates :title, :slug, :content, :visits, :reports, presence: true
 
-  validates :title, uniqueness: { scope: :user_id, case_sensitive: false }
+  validates :title, uniqueness: { scope: :user_id, case_sensitive: false }, allow_blank: true
 
   validates :slug, uniqueness: true, allow_blank: true
 
@@ -21,5 +23,9 @@ class Checklist < ApplicationRecord
       item = line.strip.squish
       item.present? ? item : nil
     end.compact.uniq
+  end
+
+  def should_be_hidden?
+    reports > visits / 2
   end
 end
