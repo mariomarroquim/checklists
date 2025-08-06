@@ -1,7 +1,9 @@
 # Todo
 
 ## Functional
-- Add call-to-action to public checklist pages
+- Improve checklist visit counting
+- Add cloning of checklists
+- Add pinning of checklists
 - Add public checklist searching / indexing (checklist directory)
 
 ## Non-functional
