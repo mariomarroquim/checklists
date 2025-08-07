@@ -6,6 +6,11 @@ class UsersController < ApplicationController
   before_action :set_user, except: %i[ new create ]
 
   def new
+    if authenticated?
+      redirect_to request.referer, notice: "You have already signed up."
+      return
+    end
+
     @user = User.new
   end
 
