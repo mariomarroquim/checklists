@@ -13,13 +13,31 @@ class ChecklistsController < ApplicationController
   end
 
   def show
+    if authenticated? && Current.user == @checklist.user
+      render :show
+      return
+    end
+
+    if session[:visits]&.include?(@checklist.slug)
+      render :show
+      return
+    end
+
     @checklist.increment!(:visits)
+
+    session[:visits] ||= []
+    session[:visits] << @checklist.slug
 
     render :show
   end
 
   def report
-    if user_reported_checklist?
+    if authenticated? && Current.user == @checklist.user
+      redirect_to public_checklist_url(@checklist.slug), alert: "You cannot report your own checklist."
+      return
+    end
+
+    if session[:reports]&.include?(@checklist.slug)
       redirect_to public_checklist_url(params.expect(:slug)), notice: "You have already reported this checklist."
       return
     end
@@ -92,14 +110,9 @@ class ChecklistsController < ApplicationController
     def find_checklist_by_slug
       @checklist = Checklist.where(slug: params.expect(:slug)&.downcase).where.not(published_at: nil).first
 
-      if @checklist.nil? || (!user_reported_checklist? && @checklist.should_be_hidden?)
+      if @checklist.nil? || @checklist.should_be_hidden?
         render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
-        nil
       end
-    end
-
-    def user_reported_checklist?
-      @user_reported_checklist ||= session[:reports]&.include?(@checklist.slug)
     end
 
     def checklist_params
