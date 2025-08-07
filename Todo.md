@@ -1,13 +1,8 @@
 # Todo
 
-## Functional
 - Forbid self-reporting
-- Improve checklist visit counting
-- Forbit sign up when signed in
-- Add cloning of checklists
-- Add pinning of checklists
-- Add public checklist searching / indexing (checklist directory)
-
-## Non-functional
-- Add rate limiting for public endpoints
+- Forbid self-visiting
+- Forbit Forbit sign up while authenticated
+- Rate limit some public endpoints
+- Add rel="nofollow" to some public pages
 - Convert system test into controller tests

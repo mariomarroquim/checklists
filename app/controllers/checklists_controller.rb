@@ -1,8 +1,10 @@
 class ChecklistsController < ApplicationController
-  before_action :find_checklist_by_id, only: %i[ edit update publish unpublish destroy ]
-  before_action :find_checklist_by_slug, only: %i[ show report ]
+  rate_limit to: 1, within: 1.second, only: :report, with: -> { redirect_to public_checklist_url(params.expect(:slug)), alert: "Try again later." }
 
   allow_unauthenticated_access only: %i[ show report ]
+
+  before_action :find_checklist_by_id, only: %i[ edit update publish unpublish destroy ]
+  before_action :find_checklist_by_slug, only: %i[ show report ]
 
   def index
     @checklists = Current.user.checklists.order(:title).all
