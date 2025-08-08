@@ -3,7 +3,3 @@
 one:
   email_address: one@gmail.com
   password_digest: <%= password_digest %>
-
-two:
-  email_address: two@gmail.com
-  password_digest: <%= password_digest %>

@@ -79,8 +79,8 @@ jobs:
         env:
           RAILS_ENV: test
           # REDIS_URL: redis://localhost:6379/0
-        # Run only controller tests to speed up CI.
-        run: bin/rails db:test:prepare test:controllers
+        # Run only integration tests to speed up CI.
+        run: bin/rails db:test:prepare test:integration
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

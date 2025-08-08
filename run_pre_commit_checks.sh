@@ -19,7 +19,7 @@ bundle exec rubocop -a
 sleep 3
 
 printf  "\n== RUNNING TESTS ==\n"
-bundle exec rails test:controllers
+bundle exec rails test:integration
 sleep 3
 
 printf  "\n== RUNNING CLEANING ==\n\n"

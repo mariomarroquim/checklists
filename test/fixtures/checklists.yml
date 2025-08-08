@@ -2,10 +2,6 @@
 
 one:
   title: MyString
+  slug: MySlug
   content: MyText
   user: one
-
-two:
-  title: MyString
-  content: MyText
-  user: two
