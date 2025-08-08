@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     if @user.save
       start_new_session_for @user
-      redirect_to after_authentication_url, notice: "Your account was created. Add your first checklist!"
+      redirect_to after_authentication_url
     else
       flash.now[:alert] = "Try another email or ensure passwords match."
       render :new, status: :unprocessable_entity

@@ -2,6 +2,9 @@
 
 one:
   title: MyString
-  slug: MySlug
+  slug: my-string
   content: MyText
+  visits: 100
+  reports: 0
+  published_at: <%= Time.current %>
   user: one

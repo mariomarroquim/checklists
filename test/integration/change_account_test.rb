@@ -4,10 +4,10 @@ class ChangeAccountTest < ActionDispatch::IntegrationTest
   setup(&:sign_in)
 
   test "should work as expected" do
-    get edit_user_url(1)
+    get edit_user_url(User.first)
     assert_dom "h2", "Change my account"
 
-    patch user_path(1), params: {
+    patch user_url(User.first), params: {
       user: {
         password: "12345678",
         password_confirmation: "12345678"
@@ -15,6 +15,6 @@ class ChangeAccountTest < ActionDispatch::IntegrationTest
     }
 
     follow_redirect!
-    assert_dom "h2", "My checklists"
+    assert_dom "p", "Your account was successfully changed."
   end
 end
