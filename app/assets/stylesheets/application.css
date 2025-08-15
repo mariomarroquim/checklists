@@ -16,3 +16,21 @@ h1 a:link {
   font-style: normal;
   text-decoration: none;
 }
+
+body > main p:last-of-type {
+  margin-bottom: 0.3rem;
+}
+
+body > footer {
+  margin-top: 5rem;
+  margin-bottom: 1.5rem;
+
+  h3 {
+    margin-top: 2.7rem;
+  }
+
+  p a img {
+    width: 10rem;
+    height: 13.33rem;
+  }
+}
