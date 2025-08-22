@@ -9,7 +9,7 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
 
 h1 a:link {
   font-family: "Limelight", sans-serif;
