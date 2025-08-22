@@ -11,40 +11,39 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
 
-h1 a:link {
+h1 a {
   font-family: "Limelight", sans-serif;
   font-weight: 400;
   font-style: normal;
   text-decoration: none;
 }
 
-body > main p:last-of-type(:not(.notice)) {
-  margin-bottom: 0.3rem;
-}
-
-body > footer {
-  margin-top: 5rem;
-  margin-bottom: 1.5rem;
-
-  h3 {
-    margin-top: 2.7rem;
-  }
-
-  p a img {
-    width: 8rem;
-    height: 10rem;
-  }
-}
-
 p.notice {
-  padding: 0.7rem 1rem 0.7rem 1rem;
+  padding: 0.7rem 1rem;
   margin-bottom: 1rem;
 }
 
-body > main#checklists-page input:not([type="submit"]) {
+p:not(.notice):last-of-type {
+  margin-bottom: 0.3rem;
+}
+
+main#checklists-page input:not([type="submit"]) {
   width: 100%;
 }
 
-textarea {
+main#checklists-page textarea {
   line-height: 2rem;
+}
+
+body > footer {
+  margin: 4.7rem 0 2.7rem 0;
+}
+
+body > footer h3 {
+  margin-top: 2.7rem;
+}
+
+body > footer img {
+  width: 8rem;
+  height: 10rem;
 }
