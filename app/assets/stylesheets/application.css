@@ -40,3 +40,11 @@ p.notice {
   padding: 0.7rem 1rem 0.7rem 1rem;
   margin-bottom: 1rem;
 }
+
+body > main#checklists-page input:not([type="submit"]) {
+  width: 100%;
+}
+
+textarea {
+  line-height: 2rem;
+}

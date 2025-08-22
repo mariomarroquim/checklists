@@ -44,7 +44,7 @@
       <% end %>
     </header>
 
-    <main>
+    <main id="<%= controller_name %>-page">
       <h2><%= content_for(:title) %></h2>
 
       <% if flash[:alert].present? || flash[:notice].present? %>
