@@ -9,7 +9,7 @@ class ChecklistsController < ApplicationController
   def index
     @checklists = Current.user.checklists.order(:title).all
 
-    flash.now[:notice] = "You have no checklists. Add your first!" if @checklists.blank?
+    flash.now[:notice] = "Please, <strong>#{helpers.link_to "add", new_checklist_path}</strong> your first checklist!" if @checklists.blank?
   end
 
   def show
@@ -33,12 +33,12 @@ class ChecklistsController < ApplicationController
 
   def report
     if authenticated? && Current.user == @checklist.user
-      redirect_to public_checklist_url(@checklist.slug), alert: "You cannot report your own checklist."
+      redirect_to public_checklist_url(@checklist.slug), alert: "You cannot report your checklists."
       return
     end
 
     if session[:reports]&.include?(@checklist.slug)
-      redirect_to public_checklist_url(params.expect(:slug)), notice: "You have already reported this checklist."
+      redirect_to public_checklist_url(params.expect(:slug)), notice: "You already reported this checklist."
       return
     end
 
@@ -47,7 +47,7 @@ class ChecklistsController < ApplicationController
     session[:reports] ||= []
     session[:reports] << @checklist.slug
 
-    redirect_to public_checklist_url(@checklist.slug), notice: "This checklist was successfully reported."
+    redirect_to public_checklist_url(@checklist.slug), notice: "This checklist was reported."
   end
 
   def new
@@ -60,46 +60,46 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.new(checklist_params.merge(user: Current.user))
 
     if @checklist.save
-      redirect_to checklists_path, notice: "Your checklist was successfully added."
+      redirect_to checklists_path, notice: "Your checklist was added."
     else
-      flash.now[:alert] = "There was an error adding your checklist."
+      flash.now[:alert] = "Adding your checklist failed."
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @checklist.update(checklist_params)
-      redirect_to checklists_path, notice: "Your checklist was successfully changed.", status: :see_other
+      redirect_to checklists_path, notice: "Your checklist was changed.", status: :see_other
     else
-      flash.now[:alert] = "There was an error changing your checklist."
+      flash.now[:alert] = "Changing your checklist failed."
       render :edit, status: :unprocessable_entity
     end
   end
 
   def publish
     if @checklist.update(published_at: Time.current)
-      notice = "Your checklist was successfully published."
+      notice = "Your checklist was published."
       notice += "<br/><small>Public URL: #{helpers.link_to public_checklist_url(slug: @checklist.slug), public_checklist_url(slug: @checklist.slug)}</small>"
 
       redirect_to checklists_path, notice:, status: :see_other
     else
-      flash.now[:alert] = "There was an error publishing your checklist."
+      flash.now[:alert] = "Publishing your checklist failed."
       render :edit, status: :unprocessable_entity
     end
   end
 
   def unpublish
     if @checklist.update(published_at: nil)
-      redirect_to checklists_path, notice: "Your checklist was successfully unpublished.", status: :see_other
+      redirect_to checklists_path, notice: "Your checklist was unpublished.", status: :see_other
     else
-      flash.now[:alert] = "There was an error unpublishing your checklist."
+      flash.now[:alert] = "Unpublishing your checklist failed."
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @checklist.destroy!
-    redirect_to checklists_path, notice: "Your checklist was successfully removed.", status: :see_other
+    redirect_to checklists_path, notice: "Your checklist was removed.", status: :see_other
   end
 
   private

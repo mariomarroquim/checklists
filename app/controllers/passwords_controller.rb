@@ -12,7 +12,7 @@ class PasswordsController < ApplicationController
       PasswordsMailer.reset(user).deliver_later
     end
 
-    redirect_to new_session_url, notice: "The password recovery link was sent by email."
+    redirect_to new_session_url, notice: "The recovery link was sent by email."
   end
 
   def edit; end
@@ -20,7 +20,7 @@ class PasswordsController < ApplicationController
   def update
     if @user.update(params.permit(:password, :password_confirmation))
       start_new_session_for @user
-      redirect_to after_authentication_url, notice: "The password was successfully created."
+      redirect_to after_authentication_url, notice: "The password was created."
     else
       redirect_to edit_password_path(params.expect(:token)), alert: "The passwords did not match."
     end
@@ -30,6 +30,6 @@ class PasswordsController < ApplicationController
     def set_user_by_token
       @user = User.find_by_password_reset_token!(params.expect(:token))
     rescue ActiveSupport::MessageVerifier::InvalidSignature
-      redirect_to new_password_path, alert: "The password recovery link is invalid or has expired."
+      redirect_to new_password_path, alert: "The recovery link is invalid or expired."
     end
 end

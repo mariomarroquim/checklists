@@ -14,6 +14,6 @@ class SignUpTest < ActionDispatch::IntegrationTest
     }
 
     follow_redirect!
-    assert_dom "p", "You have no checklists. Add your first!"
+    assert_dom "p", "Please, add your first checklist!"
   end
 end

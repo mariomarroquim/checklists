@@ -15,6 +15,6 @@ class ChangeChecklistTest < ActionDispatch::IntegrationTest
     }
 
     follow_redirect!
-    assert_dom "p", "Your checklist was successfully changed."
+    assert_dom "p", "Your checklist was changed."
   end
 end

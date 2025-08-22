@@ -10,6 +10,7 @@
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+
 h1 a:link {
   font-family: "Limelight", sans-serif;
   font-weight: 400;
@@ -17,7 +18,7 @@ h1 a:link {
   text-decoration: none;
 }
 
-body > main p:last-of-type {
+body > main p:last-of-type(:not(.notice)) {
   margin-bottom: 0.3rem;
 }
 
@@ -33,4 +34,9 @@ body > footer {
     width: 10rem;
     height: 13.33rem;
   }
+}
+
+p.notice {
+  padding: 0.7rem 1rem 0.7rem 1rem;
+  margin-bottom: 1rem;
 }

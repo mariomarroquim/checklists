@@ -10,6 +10,6 @@ class PublishChecklistTest < ActionDispatch::IntegrationTest
     post publish_checklist_url(Checklist.first)
 
     follow_redirect!
-    assert_dom "p", /Your checklist was successfully published./
+    assert_dom "p", /Your checklist was published./
   end
 end

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       start_new_session_for @user
       redirect_to after_authentication_url
     else
-      flash.now[:alert] = "Try another email or ensure passwords match."
+      flash.now[:alert] = "Try another email or match passwords."
       render :new, status: :unprocessable_entity
     end
   end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params.except(:email_address))
-      redirect_to checklists_url, notice: "Your account was successfully changed.", status: :see_other
+      redirect_to checklists_url, notice: "Your account was changed.", status: :see_other
     else
       flash.now[:alert] = "The passwords did not match."
       render :edit, status: :unprocessable_entity
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
     Current.user.destroy!
 
-    redirect_to new_session_url, notice: "Your account was successfully removed."
+    redirect_to new_session_url, notice: "Your account was removed."
   end
 
   private

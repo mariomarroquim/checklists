@@ -15,6 +15,6 @@ class ChangeAccountTest < ActionDispatch::IntegrationTest
     }
 
     follow_redirect!
-    assert_dom "p", "Your account was successfully changed."
+    assert_dom "p", "Your account was changed."
   end
 end

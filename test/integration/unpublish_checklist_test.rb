@@ -10,6 +10,6 @@ class UnpublishChecklistTest < ActionDispatch::IntegrationTest
     post unpublish_checklist_url(Checklist.first)
 
     follow_redirect!
-    assert_dom "p", "Your checklist was successfully unpublished."
+    assert_dom "p", "Your checklist was unpublished."
   end
 end

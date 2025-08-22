@@ -8,6 +8,6 @@ class ReportChecklistTest < ActionDispatch::IntegrationTest
     post report_checklist_url(slug: Checklist.first.slug)
 
     follow_redirect!
-    assert_dom "p", "This checklist was successfully reported."
+    assert_dom "p", "This checklist was reported."
   end
 end
