@@ -14,6 +14,8 @@
       <p>
         <%= link_to "Change", edit_checklist_path(checklist) %>
         |
+        <strong><%= link_to "Complete", checklist, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></strong>
+        |
         <% if checklist.published_at.blank? %>
           <%= link_to "Publish", publish_checklist_path(checklist), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>
         <% else %>
