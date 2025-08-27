@@ -25,16 +25,34 @@
   --disabled: #111;
 }
 
+a {
+  text-decoration: none;
+
+  &:hover {
+    color: var(--accent-hover);
+  }
+}
+
 h1 a {
   font-family: "Limelight", sans-serif;
   font-weight: 400;
   font-style: normal;
-  text-decoration: none;
 }
 
 p.notice {
   padding: 0.7rem 1rem;
   margin-bottom: 1rem;
+  font-weight: bold;
+  color: var(--accent-bg);
+  background-color: var(--text-light);
+}
+
+p.notice a {
+  color: #5d5d5d;
+
+  &:hover {
+    color: #727272;
+  }
 }
 
 p:not(.notice):last-of-type {
