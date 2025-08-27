@@ -13,6 +13,8 @@ Rails.application.configure do
     password: ENV.fetch("EMAIL_PASSWORD") { "password" },
     authentication: "plain",
     enable_starttls_auto: true,
-    enable_starttls: true
+    enable_starttls: true,
+    open_timeout: 10,
+    read_timeout: 10
   }
 end
