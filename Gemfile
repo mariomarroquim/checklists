@@ -78,7 +78,7 @@ group :production do
   gem "lograge"
 end
 
+gem "appsignal", "~> 4.6"
 gem "email_address"
 gem "paper_trail"
-
-gem "appsignal", "~> 4.6"
+gem "rails_autolink", "~> 1.1"
