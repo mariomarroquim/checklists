@@ -23,14 +23,12 @@
         <%= link_to "Remove", checklist, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
       </p>
 
-      <% if checklist.published_at.present? %>
-        <p>
-          <small>
-            Public URL:
-            <%= link_to public_checklist_url(slug: checklist.slug), public_checklist_url(slug: checklist.slug) %>
-          </small>
-        </p>
-      <% end %>
+      <p>
+        <small>
+          <%= checklist.published_at.blank? ? "Private URL" : "Public URL" %>:
+          <%= link_to public_checklist_url(slug: checklist.slug), public_checklist_url(slug: checklist.slug) %>
+        </small>
+      </p>
     </details>
   <% end %>
 </div>

@@ -108,7 +108,11 @@ class ChecklistsController < ApplicationController
     end
 
     def find_checklist_by_slug
-      @checklist = Checklist.where(slug: params.expect(:slug)&.downcase).where.not(published_at: nil).first
+      @checklist = Checklist.where(slug: params.expect(:slug)&.downcase).first
+
+      if @checklist.present? && authenticated? && Current.user == @checklist.user
+        return
+      end
 
       if @checklist.nil? || @checklist.should_be_hidden?
         render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found

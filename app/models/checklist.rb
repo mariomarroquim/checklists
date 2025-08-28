@@ -26,6 +26,6 @@ class Checklist < ApplicationRecord
   end
 
   def should_be_hidden?
-    reports > visits / 2
+    published_at.blank? || (reports > visits / 2)
   end
 end
