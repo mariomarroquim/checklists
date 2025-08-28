@@ -80,3 +80,5 @@ end
 
 gem "email_address"
 gem "paper_trail"
+
+gem "appsignal", "~> 4.6"
