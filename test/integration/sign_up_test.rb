@@ -8,8 +8,8 @@ class SignUpTest < ActionDispatch::IntegrationTest
     post users_url, params: {
       user: {
         email_address: "example@gmail.com",
-        password: "12345678",
-        password_confirmation: "12345678"
+        password: "password",
+        password_confirmation: "password"
       }
     }
 

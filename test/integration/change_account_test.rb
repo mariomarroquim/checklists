@@ -9,8 +9,8 @@ class ChangeAccountTest < ActionDispatch::IntegrationTest
 
     patch user_url(User.first), params: {
       user: {
-        password: "12345678",
-        password_confirmation: "12345678"
+        password: "password",
+        password_confirmation: "password"
       }
     }
 

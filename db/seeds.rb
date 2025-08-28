@@ -8,9 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-user = User.find_or_create_by!(email_address: ENV.fetch("EMAIL_ADDRESS") { "example@gmail.com" }) do |it|
-  it.password = "12345678"
-  it.password_confirmation = "12345678"
+user = User.find_or_create_by!(email_address: "example@gmail.com") do |it|
+  it.password = "password"
+  it.password_confirmation = "password"
 end
 
 Checklist.find_or_create_by!(title: "First checklist", content: "First item\nSecond item\nThird item", user:) do |it|
