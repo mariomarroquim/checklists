@@ -2,7 +2,7 @@
 
 <div id="checklists">
   <% @checklists.each do |checklist| %>
-    <details name="checklists">
+    <details name="checklists" id="checklist-<%= checklist.id %>" <%= "open" if @checklists.one? || checklist.id == params[:last_checklist_id].to_i %>>
       <summary><%= checklist.title %></summary>
 
       <ul>
