@@ -16,7 +16,7 @@
 
     <p>
       <%= form.label :password %>
-      <%= form.password_field :password, required: true, autofocus: true, autocomplete: "new-password" %>
+      <%= form.password_field :password, required: true, autocomplete: "new-password" %>
     </p>
 
     <p>
@@ -24,12 +24,16 @@
       <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
     </p>
 
-    <p><%= form.submit "Confirm" %></p>
+    <p>
+      <%= form.submit "Confirm" %>
+    </p>
   </fieldset>
 
   <fieldset>
     <legend>Danger zone</legend>
 
-    <p><%= link_to "Remove my account", @user, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" %></p>
+    <p>
+      <%= link_to "Remove my account", @user, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" %>
+    </p>
   </fieldset>
 <% end %>
