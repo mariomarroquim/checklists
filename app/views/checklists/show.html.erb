@@ -6,6 +6,12 @@
       <li><%= item %></li>
     <% end %>
   </ul>
+
+  <% if authenticated? %>
+    <p>
+      <%= render partial: "actions", locals: { checklist: @checklist } %>
+    </p>
+  <% end %>
 </div>
 
 <br/>
