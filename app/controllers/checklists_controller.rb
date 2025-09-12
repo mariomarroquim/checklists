@@ -110,7 +110,7 @@ class ChecklistsController < ApplicationController
     def find_checklist_by_slug
       @checklist = Checklist.where(slug: params.expect(:slug)&.downcase).first
 
-      if @checklist.present? && authenticated? && Current.user == @checklist.user
+      if authenticated? && @checklist.present? && @checklist.user == Current.user
         return
       end
 
