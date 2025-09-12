@@ -9,6 +9,8 @@ module Authentication
   class_methods do
     def allow_unauthenticated_access(**options)
       skip_before_action :require_authentication, **options
+
+      before_action :require_unauthenticated, **options
     end
   end
 
@@ -19,6 +21,10 @@ module Authentication
 
     def require_authentication
       resume_session || request_authentication
+    end
+
+    def require_unauthenticated
+      !resume_session || redirect_to(root_path)
     end
 
     def resume_session
