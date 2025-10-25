@@ -5,14 +5,16 @@
 # Example:
 #
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
+#     MovieGenre.create!(name: genre_name)
 #   end
 
-user = User.find_or_create_by!(email_address: "example@gmail.com") do |it|
-  it.password = "password"
-  it.password_confirmation = "password"
-end
+unless User.exists?
+  user = User.create!(email_address: "example@gmail.com") do |it|
+    it.password = "password"
+    it.password_confirmation = "password"
+  end
 
-Checklist.find_or_create_by!(title: "First checklist", content: "First item\nSecond item\nThird item", user:) do |it|
-  it.published_at = Time.current
+  Checklist.create!(title: "First checklist", content: "First item\nSecond item\nThird item", user:) do |it|
+    it.published_at = Time.current
+  end
 end
