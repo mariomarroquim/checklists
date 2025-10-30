@@ -42,7 +42,7 @@
         <nav>
           <ul>
             <li><%= link_to "My checklists", checklists_url %></li>
-            <li><%= link_to "Add a checklist", new_checklist_url %></li>
+            <li><%= link_to "Add a checklist", new_checklist_url, class: "current" %></li>
             <li><%= link_to "Change my account", edit_user_url(Current.user) %></li>
             <li><%= link_to "Sign out", session_url, data: { turbo_method: :delete } %></li>
           </ul>
