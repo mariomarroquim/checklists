@@ -61,10 +61,10 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "checklists-production-a931.up.railway.app" }
+  config.action_mailer.default_url_options = { host: "checklists.up.railway.app" }
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   config.action_mailer.delivery_method = :smtp
@@ -75,10 +75,7 @@ Rails.application.configure do
     user_name: ENV.fetch("EMAIL_ADDRESS") { "example@gmail.com" },
     password: ENV.fetch("EMAIL_PASSWORD") { "password" },
     authentication: "plain",
-    enable_starttls_auto: true,
-    enable_starttls: true,
-    open_timeout: 10,
-    read_timeout: 10
+    enable_starttls_auto: true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

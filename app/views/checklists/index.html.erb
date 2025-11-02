@@ -18,13 +18,13 @@
       <p>
         <small>
           <%= checklist.published_at.blank? ? "Private URL" : "Shareable URL" %>:
-          <%= link_to public_checklist_url(slug: checklist.slug), public_checklist_url(slug: checklist.slug) %>
+          <%= link_to public_checklist_path(slug: checklist.slug), public_checklist_path(slug: checklist.slug) %>
         </small>
       </p>
     </details>
   <% end %>
 
   <p style="margin-top: 1.7em;">
-    &#10153; <%= link_to "Add a checklist", new_checklist_url %>
+    &#10153; <%= link_to "Add a checklist", new_checklist_path %>
   </p>
 </div>
