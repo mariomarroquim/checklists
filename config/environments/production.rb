@@ -1,13 +1,13 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb.
+
   # Log requests in a single line.
   config.lograge.enabled = true
   config.lograge.custom_payload do |controller|
     { current_user_id: Current.user.try(:id) }
   end
-
-  # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.enable_reloading = false
@@ -31,10 +31,10 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
-  config.assume_ssl = true
+  # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
@@ -43,8 +43,8 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
   config.logger   = ActiveSupport::TaggedLogging.logger(STDOUT)
 
-  # Change to "debug" to log everything (including potentially personally-identifiable information!)
-  config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "error")
+  # Change to "debug" to log everything (including potentially personally-identifiable information!).
+  config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
   # Prevent health checks from clogging up the logs.
   config.silence_healthcheck_path = "/up"
@@ -61,7 +61,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "checklists.up.railway.app" }
@@ -70,10 +70,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: ENV.fetch("EMAIL_SERVER") { "smtp.gmail.com" },
-    port: 587,
     user_name: ENV.fetch("EMAIL_ADDRESS") { "example@gmail.com" },
     password: ENV.fetch("EMAIL_PASSWORD") { "password" },
+    address: ENV.fetch("EMAIL_SERVER") { "smtp.gmail.com" },
+    port: 587,
     authentication: "plain",
     enable_starttls_auto: true
   }
