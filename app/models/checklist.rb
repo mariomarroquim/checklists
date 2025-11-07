@@ -3,7 +3,7 @@ class Checklist < ApplicationRecord
 
   belongs_to :user
 
-  validates :title, :slug, :content, :visits, :reports, presence: true
+  validates :title, :slug, :visits, :reports, presence: true
 
   validates :title, uniqueness: { scope: :user_id, case_sensitive: false }, allow_blank: true
 
@@ -19,6 +19,8 @@ class Checklist < ApplicationRecord
 
   # Return the items in the checklist, splitting the content by newlines.
   def items
+    return if content.blank?
+
     @items ||= content.tr("\r", "\n").tr("\n\n", "\n").split("\n").map do |line|
       item = line.strip.squish
       item.present? ? item : nil

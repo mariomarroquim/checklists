@@ -1,11 +1,15 @@
 <% content_for :title, @checklist.title %>
 
 <div id="checklists">
-  <ul>
-    <% @checklist.items.each do |item| %>
-      <li><%= item %></li>
-    <% end %>
-  </ul>
+  <% if @checklist.items.present? %>
+    <ul>
+      <% @checklist.items.each do |item| %>
+        <li><%= item %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No items found in this checklist.</p>
+  <% end %>
 
   <% if authenticated? %>
     <p>

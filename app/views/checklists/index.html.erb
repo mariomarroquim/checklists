@@ -5,11 +5,15 @@
     <details name="checklists" id="checklist-<%= checklist.id %>" <%= "open" if @checklists.one? || checklist.id == params[:last_checklist_id].to_i %>>
       <summary><%= checklist.title %></summary>
 
-      <ul>
-        <% checklist.items.each do |item| %>
-          <li><%= auto_link(item) { "here" } %></li>
-        <% end %>
-      </ul>
+      <% if checklist.items.present? %>
+        <ul>
+          <% checklist.items.each do |item| %>
+            <li><%= auto_link(item) { "here" } %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No items found in this checklist.</p>
+      <% end %>
 
       <p>
         <%= render partial: "actions", locals: { checklist: checklist } %>
