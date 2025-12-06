@@ -9,7 +9,7 @@
 #   end
 
 unless User.exists?
-  user = User.create!(email_address: ENV.fetch("EMAIL_ADDRESS") { "example@gmail.com" }) do |it|
+  user = User.create!(email_address: "admin@example.com") do |it|
     it.password = "password"
     it.password_confirmation = "password"
   end
