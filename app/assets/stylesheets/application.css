@@ -72,8 +72,12 @@ main#checklists-page input:not([type="submit"]) {
   width: 100%;
 }
 
-main#checklists-page textarea {
-  line-height: 2rem;
+main#checklists-page ul {
+  padding-left: 1.3rem;
+
+  & li {
+    padding-left: 0px;
+  }
 }
 
 body > footer {
