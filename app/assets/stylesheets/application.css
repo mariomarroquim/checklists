@@ -80,7 +80,7 @@ main#checklists-page input:not([type="submit"]) {
   width: 100%;
 }
 
-main#checklists-page ul {
+main#checklists-page ul, main#users-page ul {
   padding-left: 1.3rem;
 
   & li {

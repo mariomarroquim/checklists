@@ -6,8 +6,8 @@
 
     <ul>
       <li>Email: <b><%= @user.email_address %></b></li>
-      <li>Created at: <b><%= @user.created_at.strftime("%B %d, %Y") %></b></li>
-      <li>Updated at: <b><%= @user.updated_at.strftime("%B %d, %Y") %></b></li>
+      <li>Created at: <b><%= @user.created_at.strftime("%Y/%m/%d") %></b></li>
+      <li>Updated at: <b><%= @user.updated_at.strftime("%Y/%m/%d") %></b></li>
     </ul>
   </fieldset>
 
