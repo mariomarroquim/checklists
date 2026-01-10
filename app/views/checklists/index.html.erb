@@ -23,7 +23,7 @@
         <p>
           <small>
             Publishable URL:
-            <%= link_to public_checklist_url(slug: checklist.slug), public_checklist_url(slug: checklist.slug) %>
+            <%= link_to truncate(public_checklist_path(slug: checklist.slug)), public_checklist_url(slug: checklist.slug) %>
           </small>
         </p>
       <% end %>
