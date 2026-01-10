@@ -34,7 +34,7 @@ a:not(.button) {
 }
 
 body > header h1 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 
   & a {
     font-family: "Limelight", sans-serif;
