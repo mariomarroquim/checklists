@@ -5,7 +5,7 @@ class AddChecklistTest < ActionDispatch::IntegrationTest
 
   test "should work as expected" do
     get new_checklist_url
-    assert_dom "h2", "Add a checklist"
+    assert_dom "h2", "Add checklist"
 
     post checklists_url, params: {
       checklist: {

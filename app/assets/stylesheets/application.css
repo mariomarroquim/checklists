@@ -33,10 +33,14 @@ a:not(.button) {
   }
 }
 
-h1 a {
-  font-family: "Limelight", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+body > header h1 {
+  margin-bottom: 0.5rem;
+
+  & a {
+    font-family: "Limelight", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 }
 
 p.notice {
@@ -68,6 +72,10 @@ fieldset {
   margin-top: 2rem;
 }
 
+main {
+  padding-top: 0;
+}
+
 main#checklists-page input:not([type="submit"]) {
   width: 100%;
 }
@@ -76,16 +84,16 @@ main#checklists-page ul {
   padding-left: 1.3rem;
 
   & li {
-    padding-left: 0px;
+    padding-left: 0;
   }
 }
 
 body > footer {
-  margin: 4.3rem 0 2.3rem 0;
+  margin: 3.2rem 0 2.3rem 0;
 }
 
 body > footer h3 {
-  margin-top: 2.3rem;
+  margin-top: 1.2rem;
 }
 
 body > footer img {

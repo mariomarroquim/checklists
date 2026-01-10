@@ -42,9 +42,8 @@
       <% if authenticated? %>
         <nav>
           <ul>
-            <li><%= link_to "My checklists", checklists_path %></li>
-            <li><%= link_to "Add a checklist", new_checklist_path, class: "current" %></li>
-            <li><%= link_to "Change my account", edit_user_path(Current.user) %></li>
+            <li><%= link_to "Add checklist", new_checklist_path, class: "current" %></li>
+            <li><%= link_to "Change account", edit_user_path(Current.user) %></li>
             <li><%= link_to "Sign out", session_path, data: { turbo_method: :delete } %></li>
           </ul>
         </nav>

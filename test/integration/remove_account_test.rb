@@ -5,7 +5,7 @@ class RemoveAccountTest < ActionDispatch::IntegrationTest
 
   test "should work as expected" do
     get edit_user_url(User.first)
-    assert_dom "h2", "Change my account"
+    assert_dom "h2", "Change account"
 
     delete user_url(User.first)
 
