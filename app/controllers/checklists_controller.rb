@@ -79,7 +79,7 @@ class ChecklistsController < ApplicationController
   def publish
     if @checklist.update(published_at: Time.current)
       notice = "Your checklist was published."
-      notice += "<br/><small>Shareable URL: #{helpers.link_to public_checklist_url(slug: @checklist.slug), public_checklist_url(slug: @checklist.slug)}</small>"
+      notice += "<br/><small>Publishable URL: #{helpers.link_to public_checklist_url(slug: @checklist.slug), public_checklist_url(slug: @checklist.slug)}</small>"
 
       redirect_to checklists_path(last_checklist_id: @checklist.id), notice:, status: :see_other
     else

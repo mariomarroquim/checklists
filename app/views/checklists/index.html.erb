@@ -19,12 +19,14 @@
         <%= render partial: "actions", locals: { checklist: checklist } %>
       </p>
 
-      <p>
-        <small>
-          <%= checklist.published_at.blank? ? "Private URL" : "Shareable URL" %>:
-          <%= link_to public_checklist_url(slug: checklist.slug), public_checklist_url(slug: checklist.slug) %>
-        </small>
-      </p>
+      <% if checklist.published_at.present? %>
+        <p>
+          <small>
+            Publishable URL:
+            <%= link_to public_checklist_url(slug: checklist.slug), public_checklist_url(slug: checklist.slug) %>
+          </small>
+        </p>
+      <% end %>
     </details>
   <% end %>
 
