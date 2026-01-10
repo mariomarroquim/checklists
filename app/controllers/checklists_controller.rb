@@ -60,7 +60,7 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.new(checklist_params.merge(user: Current.user))
 
     if @checklist.save
-      redirect_to checklists_path(last_checklist_id: @checklist.id), notice: "Your checklist was added."
+      redirect_to checklists_path, notice: "Your checklist was added."
     else
       flash.now[:alert] = "Adding your checklist failed."
       render :new, status: :unprocessable_entity
@@ -69,7 +69,7 @@ class ChecklistsController < ApplicationController
 
   def update
     if @checklist.update(checklist_params)
-      redirect_to checklists_path(last_checklist_id: @checklist.id), notice: "Your checklist was changed.", status: :see_other
+      redirect_to checklists_path, notice: "Your checklist was changed.", status: :see_other
     else
       flash.now[:alert] = "Changing your checklist failed."
       render :edit, status: :unprocessable_entity
@@ -81,7 +81,7 @@ class ChecklistsController < ApplicationController
       notice = "Your checklist was published."
       notice += "<br/><small>Publishable URL: #{helpers.link_to public_checklist_url(slug: @checklist.slug), public_checklist_url(slug: @checklist.slug)}</small>"
 
-      redirect_to checklists_path(last_checklist_id: @checklist.id), notice:, status: :see_other
+      redirect_to checklists_path, notice:, status: :see_other
     else
       flash.now[:alert] = "Publishing your checklist failed."
       render :edit, status: :unprocessable_entity
@@ -90,7 +90,7 @@ class ChecklistsController < ApplicationController
 
   def unpublish
     if @checklist.update(published_at: nil)
-      redirect_to checklists_path(last_checklist_id: @checklist.id), notice: "Your checklist was unpublished.", status: :see_other
+      redirect_to checklists_path, notice: "Your checklist was unpublished.", status: :see_other
     else
       flash.now[:alert] = "Unpublishing your checklist failed."
       render :edit, status: :unprocessable_entity
