@@ -26,7 +26,7 @@ module Authentication
     end
 
     def require_unauthenticated
-      !resume_session || redirect_to(request.referrer.presence || root_url)
+      !resume_session || redirect_to(request.referrer.presence || root_url, notice: "You are already signed in.")
     end
 
     def resume_session
