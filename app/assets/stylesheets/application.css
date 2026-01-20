@@ -80,17 +80,16 @@ main#checklists-page input:not([type="submit"]) {
   width: 100%;
 }
 
-main#checklists-page ul {
-  padding-left: 1.2rem;
-  list-style-type: none;
+main#checklists-page div ul {
+  padding-left: 1.4rem;
+}
+
+main#checklists-page details ul {
+  padding-left: 1.4rem;
 }
 
 main#users-page ul {
-  padding-left: 1.3rem;
-
-  & li {
-    padding-left: 0;
-  }
+  padding-left: 1.4rem;
 }
 
 body > footer {
