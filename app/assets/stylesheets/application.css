@@ -81,14 +81,8 @@ main#checklists-page input:not([type="submit"]) {
 }
 
 main#checklists-page ul {
-  padding-left: 0;
+  padding-left: 1.2rem;
   list-style-type: none;
-
-  & li::before {
-    padding-right: 0.3rem;
-    content: '✔';
-    color: green;
-  }
 }
 
 main#users-page ul {
