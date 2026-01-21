@@ -1,9 +1,11 @@
 class ReportsController < ApplicationController
   allow_unauthenticated_access only: :create
 
-  rate_limit to: 1, within: 1.second, only: :create, with: -> { redirect_to public_checklist_url(params.expect(:slug)), alert: "Try again later." }
+  rate_limit to: 1, within: 1.second, only: :create, with: -> {
+    redirect_to public_checklist_url(params.expect(:slug)), alert: "Try again later."
+  }
 
-  before_action :find_checklist_by_slug
+  before_action :find_checklist_by_slug, only: :create
 
   def create
     if authenticated? && Current.user == @checklist.user

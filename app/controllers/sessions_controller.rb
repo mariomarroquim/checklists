@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-  rate_limit to: 1, within: 1.second, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
+  rate_limit to: 1, within: 1.second, only: :create, with: -> {
+    redirect_to new_session_url, alert: "Try again later."
+  }
 
   allow_unauthenticated_access only: %i[ new create ]
 

@@ -1,5 +1,7 @@
 class PasswordsController < ApplicationController
-  rate_limit to: 1, within: 10.minutes, only: :create, with: -> { redirect_to new_password_path, alert: "Try again later." }
+  rate_limit to: 1, within: 10.minutes, only: :create, with: -> {
+    redirect_to new_password_url, alert: "Try again later."
+  }
 
   allow_unauthenticated_access
 
