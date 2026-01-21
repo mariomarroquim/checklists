@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  rate_limit to: 1, within: 1.second, only: :create, with: -> { redirect_to new_session_path, alert: "Try again later." }
+  rate_limit to: 1, within: 1.second, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
   allow_unauthenticated_access only: %i[ new create ]
 
@@ -12,12 +12,12 @@ class SessionsController < ApplicationController
       start_new_session_for user
       redirect_to after_authentication_url
     else
-      redirect_to new_session_path, alert: "Try another email address or password."
+      redirect_to new_session_url, alert: "Try another email address or password."
     end
   end
 
   def destroy
     terminate_session
-    redirect_to new_session_path
+    redirect_to new_session_url
   end
 end

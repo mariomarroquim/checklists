@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   resources :passwords, param: :token, except: %i[ index show destroy ]
 
   resources :checklists, except: :show
+  resources :publications, only: %i[ create destroy ]
+
   get "/:slug", controller: "checklists", action: :show, as: :public_checklist
-  post "/:slug/report", controller: "checklists", action: :report, as: :report_checklist
-  post "/checklists/:id/publish", controller: "checklists", action: :publish, as: :publish_checklist
-  post "/checklists/:id/unpublish", controller: "checklists", action: :unpublish, as: :unpublish_checklist
+  post "/:slug/report", controller: "reports", action: :create, as: :reports
 end

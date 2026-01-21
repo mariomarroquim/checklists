@@ -24,7 +24,7 @@ class PasswordsController < ApplicationController
       start_new_session_for @user
       redirect_to after_authentication_url, notice: "The password was created."
     else
-      redirect_to edit_password_path(params.expect(:token)), alert: "The passwords did not match."
+      redirect_to edit_password_url(params.expect(:token)), alert: "The passwords did not match."
     end
   end
 
@@ -32,6 +32,6 @@ class PasswordsController < ApplicationController
     def set_user_by_token
       @user = User.find_by_password_reset_token!(params.expect(:token))
     rescue ActiveSupport::MessageVerifier::InvalidSignature
-      redirect_to new_password_path, alert: "The recovery link is invalid or expired."
+      redirect_to new_password_url, alert: "The recovery link is invalid or expired."
     end
 end
