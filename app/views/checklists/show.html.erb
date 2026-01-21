@@ -17,5 +17,5 @@
   You can <b><%= link_to "sign up", new_user_path, rel: "nofollow" %></b> and manage/publish your own checklists. It's free!
 
   If you find this checklist inappropriate, please
-  <%= link_to "report it", reports_path(@checklist.slug), rel: "nofollow", data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>.
+  <%= link_to "report it", public_checklist_reports_path(@checklist.slug), rel: "nofollow", data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>.
 </small>
