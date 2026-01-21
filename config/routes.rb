@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   resources :publications, only: %i[ create destroy ]
 
   get "/:slug", controller: "checklists", action: :show, as: :public_checklist
-  post "/:slug/report", controller: "reports", action: :create, as: :reports
+  post "/:slug/reports", controller: "reports", action: :create, as: :reports
 end
