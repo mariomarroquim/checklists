@@ -25,6 +25,7 @@
   --disabled: #111;
 }
 
+/* Base Elements */
 a:not(.button) {
   text-decoration: none;
 
@@ -33,74 +34,90 @@ a:not(.button) {
   }
 }
 
-body > header h1 {
-  margin-bottom: 0.4rem;
-
-  & a {
-    font-family: "Limelight", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+/* Layout Parts */
+body {
+  & > header {
+    padding-bottom: 1.2rem;
   }
-}
 
-p.notice {
-  padding: 0.7rem 1rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
-  color: var(--accent-bg);
-  background-color: var(--text-light);
-}
+  & > header h1 {
+    margin-block-end: 0.4rem;
 
-p.notice a {
-  color: #5d5d5d;
-
-  &:hover {
-    color: #727272;
+    & a {
+      font-family: "Limelight", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
   }
-}
 
-p:not(.notice):last-of-type {
-  margin-bottom: 0.3rem;
-}
+  & > footer {
+    margin-block: 3.2rem 2.3rem;
 
-fieldset {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-}
+    & h3 {
+      margin-top: 1.2rem;
+    }
 
-#users-page > form > fieldset:nth-child(4) > p:nth-child(4) {
-  margin-top: 2rem;
+    & img {
+      width: 8rem;
+      height: 10rem;
+      object-fit: cover; /* Added to prevent distortion since height/width are fixed */
+    }
+  }
 }
 
 main {
-  padding-top: 0;
+  padding-block-start: 0;
+
+  /* Specific Page Styles using :is() for cleaner grouping */
+  &#checklists-page {
+    & input:not([type="submit"]) {
+      width: 100%;
+    }
+
+    & div ul {
+      padding-inline-start: 1.4rem;
+    }
+
+    & details ul {
+      list-style-type: none;
+      padding-inline-start: 0;
+    }
+  }
+
+  &#users-page {
+    & ul {
+      padding-inline-start: 1.4rem;
+    }
+
+    & fieldset:nth-child(4) p:nth-child(4) {
+      margin-top: 2rem;
+    }
+  }
 }
 
-main#checklists-page input:not([type="submit"]) {
-  width: 100%;
+/* Components */
+p {
+  &:not(.notice):last-of-type {
+    margin-block-end: 0.3rem;
+  }
+
+  &.notice {
+    padding: 0.7rem 1rem;
+    margin-block-end: 1rem;
+    font-weight: bold;
+    color: var(--accent-bg);
+    background-color: var(--text-light);
+
+    & a {
+      color: #5d5d5d;
+
+      &:hover {
+        color: #727272;
+      }
+    }
+  }
 }
 
-main#checklists-page div ul {
-  padding-left: 1.4rem;
-}
-
-main#checklists-page details ul {
-  padding-left: 1.4rem;
-}
-
-main#users-page ul {
-  padding-left: 1.4rem;
-}
-
-body > footer {
-  margin: 3.2rem 0 2.3rem 0;
-}
-
-body > footer h3 {
-  margin-top: 1.2rem;
-}
-
-body > footer img {
-  width: 8rem;
-  height: 10rem;
+fieldset {
+  padding-block: 1rem 2rem;
 }
