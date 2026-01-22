@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
   resources :checklists, except: :show
   resources :publications, only: %i[ create destroy ]
+  resources :reports, only: :create
 
-  get "/:slug", controller: "checklists", action: :show, as: :public_checklist_page
-  post "/:slug/reports", controller: "reports", action: :create, as: :public_checklist_reports
+  # Custom human-readable URLs for public checklists
+  get "/:slug", controller: "checklists", action: :show, as: :public_checklist
 end
