@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   resource :session, except: %i[ show edit update ]
   resources :passwords, param: :token, except: %i[ index show destroy ]
 
-  resources :checklists, except: :show
-  resources :publications, only: %i[ create destroy ]
-  resources :reports, only: :create
+  resources :checklists, except: :show do
+    resource :publication, only: %i[ create destroy ]
+    resources :reports, only: :create
+  end
 
   # Custom human-readable URLs for public checklists
   get "/:slug", controller: "checklists", action: :show, as: :public_checklist

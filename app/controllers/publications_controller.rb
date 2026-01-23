@@ -1,5 +1,5 @@
 class PublicationsController < ApplicationController
-  before_action :find_checklist_by_id
+  before_action :find_checklist_by_id, only: %i[ create destroy ]
 
   def create
     @checklist.update(published_at: Time.current)

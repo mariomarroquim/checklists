@@ -12,7 +12,9 @@ class ApplicationController < ActionController::Base
 
   protected
     def find_checklist_by_id
-      @checklist = Current.user.checklists.find(params.expect(:id))
+      param_name = params[:id].present? ? :id : :checklist_id
+
+      @checklist = Current.user.checklists.find(params.expect(param_name))
     end
 
     def find_checklist_by_slug

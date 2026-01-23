@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
     redirect_to public_checklist_url(params.expect(:slug)), alert: "Try again later."
   }
 
-  before_action :find_checklist_by_slug, only: :create
+  before_action :find_checklist_by_id, only: :create
 
   def create
     if authenticated? && Current.user == @checklist.user
@@ -25,4 +25,9 @@ class ReportsController < ApplicationController
 
     redirect_to public_checklist_url(@checklist.slug), notice: "This checklist was reported."
   end
+
+  private
+    def find_checklist_by_id
+      @checklist = Checklist.find(params.expect(:checklist_id))
+    end
 end

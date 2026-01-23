@@ -5,7 +5,7 @@ class ReportChecklistTest < ActionDispatch::IntegrationTest
     get public_checklist_url(Checklist.first.slug)
     assert_dom "h2", Checklist.first.title
 
-    post reports_url(slug: Checklist.first.slug)
+    post checklist_reports_url(checklist_id: Checklist.first)
 
     follow_redirect!
     assert_dom "p", "This checklist was reported."

@@ -7,7 +7,7 @@ class PublishChecklistTest < ActionDispatch::IntegrationTest
     get root_url
     assert_dom "h2", "My checklists"
 
-    post publications_url(id: Checklist.first)
+    post checklist_publication_url(checklist_id: Checklist.first)
 
     follow_redirect!
     assert_dom "p", /Your checklist was published./
