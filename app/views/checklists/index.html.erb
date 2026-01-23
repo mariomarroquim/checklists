@@ -19,9 +19,9 @@
         <%= link_to "Change", edit_checklist_path(checklist) %>
         |
         <% if checklist.published_at.blank? %>
-          <%= link_to "Publish", checklist_publication_path(checklist_id: checklist), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>
+          <%= link_to "Publish", checklist_publication_path(checklist), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>
         <% else %>
-          <%= link_to "Unpublish", checklist_publication_path(checklist_id: checklist), data: { turbo_method: :delete } %>
+          <%= link_to "Unpublish", checklist_publication_path(checklist), data: { turbo_method: :delete } %>
         <% end %>
         |
         <%= link_to "Remove", checklist, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>

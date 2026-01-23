@@ -20,5 +20,9 @@ module ActiveSupport
 
       follow_redirect!
     end
+
+    def checklist
+      @checklist ||= Checklist.first
+    end
   end
 end
