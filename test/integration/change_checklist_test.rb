@@ -4,10 +4,10 @@ class ChangeChecklistTest < ActionDispatch::IntegrationTest
   setup(&:sign_in)
 
   test "should work as expected" do
-    get edit_checklist_url(Checklist.first)
+    get edit_checklist_url(checklist)
     assert_dom "h2", "Change checklist"
 
-    patch checklist_url(Checklist.first), params: {
+    patch checklist_url(checklist), params: {
       checklist: {
         title: "Example",
         content: "First item\nSecond item\nThird item"
