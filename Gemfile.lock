@@ -289,9 +289,9 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
-    reactionview (0.1.6)
+    reactionview (0.2.0)
       actionview (>= 7.0)
-      herb (>= 0.7.5, < 1.0.0)
+      herb (>= 0.8.0, < 1.0.0)
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)
@@ -433,7 +433,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.1.1)
   rails_autolink (~> 1.1)
-  reactionview (~> 0.1.6)
+  reactionview (~> 0.2.0)
   rubocop-performance
   rubocop-rails-omakase
   selenium-webdriver
