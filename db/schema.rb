@@ -10,20 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_02_111544) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_04_195048) do
   create_table "checklists", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "published_at"
     t.integer "reports", default: 0, null: false
-    t.string "slug", null: false
     t.string "title", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.integer "visits", default: 0, null: false
     t.index "lower(title), user_id", name: "index_checklists_lower_title__user_id", unique: true
-    t.index ["slug", "published_at"], name: "index_checklists_on_slug_and_published_at"
-    t.index ["slug"], name: "index_checklists_on_slug", unique: true
     t.index ["user_id"], name: "index_checklists_on_user_id"
   end
 

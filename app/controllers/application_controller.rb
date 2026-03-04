@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     end
 
     def find_checklist_by_slug
-      @checklist = Checklist.where(slug: params.expect(:slug)&.downcase).first
+      @checklist = Checklist.where(id: params.expect(:slug)&.split("-")&.last).first
 
       if @checklist.nil? || @checklist.should_be_hidden?
         render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found

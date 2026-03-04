@@ -3,18 +3,15 @@ class Checklist < ApplicationRecord
 
   belongs_to :user
 
-  validates :title, :slug, :visits, :reports, presence: true
+  validates :title, :visits, :reports, presence: true
 
   validates :title, uniqueness: { scope: :user_id, case_sensitive: false }, allow_blank: true
 
-  validates :slug, uniqueness: true, allow_blank: true
-
   normalizes :title, with: ->(title) { title.strip.squish }
 
-  before_validation do |it|
-    if it.slug.blank? && it.title.present?
-      it.slug = "#{it.title.parameterize}-#{SecureRandom.urlsafe_base64(5).downcase}"
-    end
+  # Return a human-readable slug for the checklist, combining the title with the ID.
+  def slug
+    "#{title.parameterize}-#{id}"
   end
 
   # Return the items in the checklist, splitting the content by newlines.
