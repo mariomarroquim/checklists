@@ -4,7 +4,7 @@
   <% if @checklist.items.present? %>
     <ul>
       <% @checklist.items.each do |item| %>
-        <li><%= item %></li>
+        <li><%= auto_link(item) { "here" } %></li>
       <% end %>
     </ul>
   <% else %>
