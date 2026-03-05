@@ -9,12 +9,12 @@ class Checklist < ApplicationRecord
 
   normalizes :title, with: ->(title) { title.strip.squish }
 
-  # Return a human-readable slug for the checklist, combining the title with the ID.
+  # Returns a human-readable slug for the checklist, combining the title with the ID.
   def slug
-    "#{title.parameterize}-#{id}"
+    @slug ||= "#{title.parameterize}-#{id}"
   end
 
-  # Return the items in the checklist, splitting the content by newlines.
+  # Returns the items in the checklist by splitting content by newlines.
   def items
     return if content.blank?
 
@@ -24,6 +24,7 @@ class Checklist < ApplicationRecord
     end.compact.uniq
   end
 
+  # Checks if the checklist should be hidden based on its status and reports to visits ratio.
   def should_be_hidden?
     published_at.blank? || (reports > visits / 2)
   end

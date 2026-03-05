@@ -1,0 +1,21 @@
+<details name="checklists" id="checklist-<%= checklist.id %>">
+  <summary><%= checklist.title %></summary>
+
+  <% if checklist.items.present? %>
+    <ul>
+      <% checklist.items.each do |item| %>
+        <li><%= auto_link(item) { "here" } %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No items found in this checklist.</p>
+  <% end %>
+
+  <p>
+    <%= link_to "Change", edit_checklist_path(checklist) %>
+    |
+    <%= link_to "Publish", checklist_publication_path(checklist), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>
+    |
+    <%= link_to "Remove", checklist, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  </p>
+</details>

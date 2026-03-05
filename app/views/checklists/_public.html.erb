@@ -1,0 +1,28 @@
+<details name="checklists" id="checklist-<%= checklist.id %>">
+  <summary><%= "#{checklist.title} | Public" %></summary>
+
+  <% if checklist.items.present? %>
+    <ul>
+      <% checklist.items.each do |item| %>
+        <li><%= auto_link(item) { "here" } %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No items found in this checklist.</p>
+  <% end %>
+
+  <p>
+    <%= link_to "Change", edit_checklist_path(checklist) %>
+    |
+    <%= link_to "Unpublish", checklist_publication_path(checklist), data: { turbo_method: :delete } %>
+    |
+    <%= link_to "Remove", checklist, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  </p>
+
+  <p>
+    <small>
+      Publishable URL:
+      <%= link_to truncate(public_checklist_path(checklist.slug)), public_checklist_url(checklist.slug) %>
+    </small>
+  </p>
+</details>

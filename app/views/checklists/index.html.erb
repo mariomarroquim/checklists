@@ -2,40 +2,8 @@
 
 <div id="checklists">
   <% @checklists.each do |checklist| %>
-    <details name="checklists" id="checklist-<%= checklist.id %>">
-      <summary><%= checklist.title %></summary>
-
-      <% if checklist.items.present? %>
-        <ul>
-          <% checklist.items.each do |item| %>
-            <li><%= auto_link(item) { "here" } %></li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>No items found in this checklist.</p>
-      <% end %>
-
-      <p>
-        <%= link_to "Change", edit_checklist_path(checklist) %>
-        |
-        <% if checklist.published_at.blank? %>
-          <%= link_to "Publish", checklist_publication_path(checklist), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>
-        <% else %>
-          <%= link_to "Unpublish", checklist_publication_path(checklist), data: { turbo_method: :delete } %>
-        <% end %>
-        |
-        <%= link_to "Remove", checklist, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-      </p>
-
-      <% if checklist.published_at.present? %>
-        <p>
-          <small>
-            Publishable URL:
-            <%= link_to truncate(public_checklist_path(checklist.slug)), public_checklist_url(checklist.slug) %>
-          </small>
-        </p>
-      <% end %>
-    </details>
+    <%= render "checklists/private", checklist: checklist if checklist.published_at.blank? %>
+    <%= render "checklists/public", checklist: checklist if checklist.published_at.present? %>
   <% end %>
 
   <p style="margin-top: 1.7em;">
