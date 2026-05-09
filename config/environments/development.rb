@@ -1,12 +1,6 @@
-# Load the environment variables from an .env file.
-require "dotenv/load"
-
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
-
-  # Enable Bullet gem to detect N+1 queries and unused eager loading.
   config.after_initialize do
     Bullet.enable        = true
     Bullet.alert         = true
@@ -15,6 +9,8 @@ Rails.application.configure do
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
   end
+
+  # Settings specified here will take precedence over those in config/application.rb.
 
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true

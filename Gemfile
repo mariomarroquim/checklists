@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.1"
+gem "rails", "~> 8.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
@@ -78,9 +78,7 @@ group :production do
   gem "lograge"
 end
 
-gem "appsignal", "~> 4.6"
 gem "email_address"
 gem "paper_trail"
 gem "rails_autolink", "~> 1.1"
-
 gem "reactionview", "~> 0.1.6"

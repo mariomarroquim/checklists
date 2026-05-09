@@ -3,21 +3,17 @@
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
 
-# Load the environment variables from an .env file.
-require "dotenv/load"
-
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
-
   # Disable tracking changes to models.
   PaperTrail.enabled = false
 
-  # Enable Bullet gem to detect N+1 queries and unused eager loading.
   config.after_initialize do
     Bullet.enable        = true
     Bullet.bullet_logger = true
     Bullet.raise         = true # raise an error if n+1 query occurs
   end
+
+  # Settings specified here will take precedence over those in config/application.rb.
 
   # While tests run files are not watched, reloading is not necessary.
   config.enable_reloading = false
