@@ -2,12 +2,29 @@
 <html lang="en">
   <head>
     <title><%= "Checklists | #{content_for(:title)}" %></title>
+    <link rel="icon" type="image/png" href="/favicon.png"/>
 
-    <meta name="charset" content="utf-8">
-    <meta name="theme-color" content="#2B2B2B">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+
+    <meta name="description" content="Checklists avoid mistakes. Manage yours here. For free."/>
+    <meta name="keywords" content="checklists"/>
+    <meta name="author" content="Checklists"/>
+    <meta name="robots" content="index, follow"/>
+
+    <link rel="canonical" href="<%= root_url %>"/>
+
+    <meta property="og:title" content="Checklists"/>
+    <meta property="og:description" content="Checklists avoid mistakes. Manage yours here. For free."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="<%= root_url %>"/>
+
+    <meta name="theme-color" content="#2b2b2b"/>
+    <meta name="language" content="English"/>
+    <meta name="distribution" content="global"/>
+    <meta name="rating" content="general"/>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -18,12 +35,9 @@
     <link rel="preload" href="https://fonts.gstatic.com/s/limelight/v20/XLYkIZL7aopJVbZJHDuoNOlHnnY.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://fonts.gstatic.com/s/limelight/v20/XLYkIZL7aopJVbZJHDuoOulH.woff2" as="font" type="font/woff2" crossorigin>
 
-    <%# Includes Favicons %>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
-
     <%# Enables PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
 
     <%# Uses Simple.css framework from https://simplecss.org %>
     <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
@@ -37,7 +51,7 @@
 
   <body>
     <header>
-      <h1><%= link_to "checklists", checklists_path %></h1>
+      <h1><%= link_to "Checklists", checklists_path %></h1>
 
       <% if authenticated? %>
         <nav>
@@ -87,10 +101,10 @@
 
       <p>
         &copy;
-        <%= Date.today.year %>
-        <a href="https://mariomarroquim.github.io">Mário Marroquim</a>.
-        All rights reserved.
-        <%= "Version #{APP_VERSION}" %>
+        <%= Date.today.year %> Checklists. All rights reserved.
+        <br/>
+        Version: <b><%= APP_VERSION %></b>.
+        Support: <b><a href="mailto:mariomarroquim@gmail.com">mariomarroquim@gmail.com</a></b>.
       </p>
     </footer>
   </body>
