@@ -1,24 +1,11 @@
-# README
+# Checklists
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This web application helps you manage and organize checklists. Checklists matter both at home and on the job. For everyday tasks such as shopping and packing, they offload repeating sequences from memory so interruptions cause fewer forgotten steps. For professional work, they standardize critical steps under deadlines and context-switching, keep handoffs consistent, and leave a clearer audit trail when outcomes matter.
 
-Things you may want to cover:
+## Instructions
 
-* Ruby version
+This is a standard Ruby on Rails web application. Run `bin/setup`, then open [http://localhost:3000](http://localhost:3000).
 
-* System dependencies
+## Support
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can contact me at mariomarroquim@gmail.com.
