@@ -74,4 +74,3 @@ end
 gem "email_address"
 gem "paper_trail"
 gem "rails_autolink", "~> 1.1"
-gem "reactionview", "~> 0.1.6"
